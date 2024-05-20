@@ -12,29 +12,36 @@ import com.vipin.utility.ConnectionProvider;
 public class Checker {
 
 	public static void main(String[] args) {
-		EntityManager em=ConnectionProvider.getManager();
-//		Address adr=new Address(1,"mp","home");
-//		Address adr2=new Address(2,"up","office");
-//		Employee emp=new Employee();
+		EntityManager em = ConnectionProvider.getManager();
+//		Address adr = new Address(1, "mp", "home");
+//		Address adr2 = new Address(2, "up", "office");
+//		Employee emp = new Employee();
+//		Employee emp2 = new Employee();
 //		emp.setName("shourya");
-//        emp.getAdr().add(adr2);
-//        emp.getAdr().add(adr);
-//		em.getTransaction().begin();
-//		 
-//		em.persist(emp);
+//		emp.getAdr().add(adr2);
+//		emp.getAdr().add(adr);
+//		adr.getEmplist().add(emp);
+//		adr.getEmplist().add(emp2);
+//		adr2.getEmplist().add(emp);
+//		adr2.getEmplist().add(emp2);
+//		emp2.setName("vipin");
 //		
+//
+//	
+//		emp2.getAdr().add(adr);
+//		emp2.getAdr().add(adr2);
+//
+//		em.getTransaction().begin();
+//
+//		em.persist(emp);
+//		em.persist(emp2);
+//
 //		em.close();
 //		em.getTransaction().commit();
-		String jpql="select adr from Employee";
 		
-		Query q= em.createQuery(jpql);
 		
-	   List<Address>obj= q.getResultList();
-	  System.out.println(obj);
-		
-	
-
-
+	Address adr=em.find(Address.class, 2);
+System.out.println(adr.getEmplist());
 	}
 
 }

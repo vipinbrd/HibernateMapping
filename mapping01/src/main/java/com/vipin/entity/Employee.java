@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Cascade;
@@ -24,9 +25,9 @@ public class Employee {
 	private int eid;
 	@Column(name = "ename")
 	private String name;
-    @OneToMany
-    @Cascade(CascadeType.ALL)
-    @JoinTable(name="emp_adr",joinColumns = @JoinColumn(name="empid"),inverseJoinColumns = @JoinColumn(name="adrid"))
+
+    @ManyToMany(cascade = javax.persistence.CascadeType.ALL )
+    @JoinTable(name="emp_adr",joinColumns = @JoinColumn(name="eid"),inverseJoinColumns = @JoinColumn(name="adr_id"))
 	private List<Address> adr=new ArrayList<>();
 
 	public Employee() {

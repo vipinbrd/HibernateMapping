@@ -1,15 +1,30 @@
 package com.vipin.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Address {
+	
 	@Id
 	
 	private int aid;
 	private String state;
 	private String country;
+	
+    @ManyToMany(cascade = javax.persistence.CascadeType.ALL,mappedBy = "adr")
+	private List<Employee>emplist=new ArrayList<>();
+
+	public List<Employee> getEmplist() {
+		return emplist;
+	}
+	public void setEmplist(List<Employee> emplist) {
+		this.emplist = emplist;
+	}
 	public int getAid() {
 		return aid;
 	}
